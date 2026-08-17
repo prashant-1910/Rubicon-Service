@@ -57,4 +57,4 @@ build/
 .env
 application-local.yml
 application-local.yaml
-application-local.properties
+application-local.propertiess
