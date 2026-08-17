@@ -20,7 +20,8 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat-runtime'
+	// External Tomcat will provide Tomcat at runtime
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
