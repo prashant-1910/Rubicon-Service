@@ -1,47 +1,51 @@
 package com.scandia.net.rubicon.service;
 
 import com.scandia.net.rubicon.DTO.Student;
+import com.scandia.net.rubicon.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class StudentService {
-    private final Map<Long, Student> students = new ConcurrentHashMap<>();
-    private final AtomicLong idCounter = new AtomicLong(1);
+    
+    private final StudentRepository studentRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     public Student createStudent(Student s) {
-        Long id = idCounter.getAndIncrement();
-        s.setId(id);
-        students.put(id, s);
-        return s;
+        s.setId(null);
+        return studentRepository.save(s);
     }
 
     public Optional<Student> updateStudent(Long id, Student s) {
-        Student existing = students.get(id);
-        if (existing == null) return Optional.empty();
-        // update fields
-        existing.setUserName(s.getUserName());
-        existing.setFirstName(s.getFirstName());
-        existing.setLastName(s.getLastName());
-        existing.setAddress(s.getAddress());
-        return Optional.of(existing);
+        return studentRepository.findById(id).map(existing -> {
+            existing.setUserName(s.getUserName());
+            existing.setFirstName(s.getFirstName());
+            existing.setLastName(s.getLastName());
+            existing.setAddress(s.getAddress());
+            return studentRepository.save(existing);
+        });
     }
 
     public boolean deleteStudent(Long id) {
-        return students.remove(id) != null;
+        if (studentRepository.existsById(id)) {
+            studentRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     public List<Student> getAllStudents() {
-        return new ArrayList<>(students.values());
+        return studentRepository.findAll();
     }
 
     public Optional<Student> getStudentById(Long id) {
-        return Optional.ofNullable(students.get(id));
+        return studentRepository.findById(id);
     }
 }
