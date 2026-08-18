@@ -13,3 +13,5 @@ public class TestController {
 		return "Hi There !!!!!";
 	}
 }
+//http://52.66.187.237:9090/rubicon/test
+//http://localhost:9090/swagger-ui/index.html#/test-controller/test
