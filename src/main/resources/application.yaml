@@ -30,5 +30,6 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
-    config-url: /api/rubicon/v3/api-docs/swagger-config
+    config-url: ../v3/api-docs/swagger-config
+    url: ../v3/api-docs
     operations-sorter: method
