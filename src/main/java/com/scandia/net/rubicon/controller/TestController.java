@@ -15,7 +15,7 @@ public class TestController {
 
     @GetMapping
     public String test() {
-        return "Hi There !!!!! Host: " + getHostName() + ", IP: " + getHostIp();
+        return "Hi There ! Host: " + getHostName() + ", IP: " + getHostIp();
     }
 
     private String getHostName() {
