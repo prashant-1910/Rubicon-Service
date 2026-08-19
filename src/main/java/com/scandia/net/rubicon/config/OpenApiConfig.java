@@ -14,7 +14,7 @@ public class OpenApiConfig {
 	@Bean
 	public OpenAPI rubiconOpenAPI() {
 		Server server = new Server();
-		server.setUrl("/api");
+		server.setUrl("/api/rubicon");
 		server.setDescription("API Server");
 
 		return new OpenAPI()
