@@ -3,8 +3,8 @@ spring:
     name: rubicon
   datasource:
     url: jdbc:postgresql://localhost:5432/rubicon
-    username: rub_user
-    password: rubicon1916
+    username: postgres
+    password: 1916
     driver-class-name: org.postgresql.Driver
     #    url: jdbc:postgresql://database-1.c74ems0qcjiq.ap-south-1.rds.amazonaws.com:5432/rubicon
     #    username: postgres
@@ -26,7 +26,9 @@ server:
 
 springdoc:
   api-docs:
-    path: /api/v3/api-docs
+    path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
+    url: /api/v3/api-docs
+    config-url: /api/v3/api-docs/swagger-config
     operations-sorter: method
