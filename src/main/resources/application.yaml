@@ -2,11 +2,16 @@ spring:
   application:
     name: rubicon
   datasource:
-    url: jdbc:postgresql://localhost:5432/rubicon
+    url: jdbc:postgresql://database-1.c74ems0qcjiq.ap-south-1.rds.amazonaws.com:5432/rubicon
+    username: postgres
+    password: rubicon1916
+
+#    url: jdbc:postgresql://localhost:5432/rubicon
 #    username: postgres
 #    password: 1916
-    username: rub_user
-    password: rubicon1916
+#    url: jdbc:postgresql://15.252.182.241:5432/rubicon
+#    username: rub_user
+#    password: rubicon1916
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
